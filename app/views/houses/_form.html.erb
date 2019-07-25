@@ -17,7 +17,7 @@
 
     <%= f.label :name %>
 
-    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name", autofocus:true %>
     <% if name_was_invalid %>
       <% house.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">

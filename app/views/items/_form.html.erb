@@ -17,7 +17,7 @@
 
     <%= f.label :name %>
 
-    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name", autofocus:true %>
     <% if name_was_invalid %>
       <% item.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -40,8 +40,8 @@
     <% end %>
 
     <%= f.label :box %>
-    <%= f.collection_select(:box_id, House.order(:name), :id, :name, {}, class: "form-control") %>
-    <%= f.text_field :box, class: box_class, placeholder: "Enter box" %>
+    <%= f.collection_select(:box_id, Box.order(:id), :id, :option_display_value, {:prompt => 'Select a box or create a new box...'},  class: "form-control") %>
+
     <% if box_was_invalid %>
       <% item.errors.full_messages_for(:box).each do |message| %>
         <div class="invalid-feedback d-flex">
