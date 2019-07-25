@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "boxes#index"
+
   resources :destinations
   resources :items
   resources :boxes
