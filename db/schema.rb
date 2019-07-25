@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_25_012331) do
+ActiveRecord::Schema.define(version: 2019_07_25_162908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,15 @@ ActiveRecord::Schema.define(version: 2019_07_25_012331) do
     t.bigint "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "destination_id"
+    t.index ["destination_id"], name: "index_boxes_on_destination_id"
     t.index ["house_id"], name: "index_boxes_on_house_id"
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.string "room_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "houses", force: :cascade do |t|
@@ -37,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_012331) do
     t.index ["box_id"], name: "index_items_on_box_id"
   end
 
+  add_foreign_key "boxes", "destinations"
   add_foreign_key "boxes", "houses"
   add_foreign_key "items", "boxes"
 end

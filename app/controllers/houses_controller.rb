@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: %i[show edit update destroy]
 
   # GET /houses
   def index
@@ -7,8 +7,7 @@ class HousesController < ApplicationController
   end
 
   # GET /houses/1
-  def show
-  end
+  def show; end
 
   # GET /houses/new
   def new
@@ -16,15 +15,14 @@ class HousesController < ApplicationController
   end
 
   # GET /houses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /houses
   def create
     @house = House.new(house_params)
 
     if @house.save
-      redirect_to @house, notice: 'House was successfully created.'
+      redirect_to @house, notice: "House was successfully created."
     else
       render :new
     end
@@ -33,7 +31,7 @@ class HousesController < ApplicationController
   # PATCH/PUT /houses/1
   def update
     if @house.update(house_params)
-      redirect_to @house, notice: 'House was successfully updated.'
+      redirect_to @house, notice: "House was successfully updated."
     else
       render :edit
     end
@@ -42,17 +40,18 @@ class HousesController < ApplicationController
   # DELETE /houses/1
   def destroy
     @house.destroy
-    redirect_to houses_url, notice: 'House was successfully destroyed.'
+    redirect_to houses_url, notice: "House was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_house
-      @house = House.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def house_params
-      params.require(:house).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_house
+    @house = House.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def house_params
+    params.require(:house).permit(:name)
+  end
 end

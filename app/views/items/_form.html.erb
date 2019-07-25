@@ -40,7 +40,7 @@
     <% end %>
 
     <%= f.label :box %>
-
+    <%= f.collection_select(:box_id, House.order(:name), :id, :name, {}, class: "form-control") %>
     <%= f.text_field :box, class: box_class, placeholder: "Enter box" %>
     <% if box_was_invalid %>
       <% item.errors.full_messages_for(:box).each do |message| %>
