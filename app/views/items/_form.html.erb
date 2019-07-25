@@ -1,0 +1,55 @@
+<% was_validated = item.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(item, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = item.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% item.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% box_class = "form-control" %>
+    <% box_was_invalid = item.errors.include?(:box) %>
+
+    <% if was_validated %>
+      <% if box_was_invalid %>
+        <% box_class << " is-invalid" %>
+      <% else %>
+        <% box_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :box %>
+
+    <%= f.text_field :box, class: box_class, placeholder: "Enter box" %>
+    <% if box_was_invalid %>
+      <% item.errors.full_messages_for(:box).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

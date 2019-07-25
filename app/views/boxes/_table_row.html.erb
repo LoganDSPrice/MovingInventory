@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= box.description %>
+  </td>
+
+  <td>
+    <%= box.house %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to box, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_box_url(box), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to box, method: :delete, data: { confirm: "Do you really want to delete this box?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
