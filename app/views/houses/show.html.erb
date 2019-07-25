@@ -3,3 +3,35 @@
     <%= render object: @house, partial: "card", as: :house %>
   </div>
 </div>
+<div class="row justify-content-center mb-3">
+  <div class="col-md-10">
+    <h1>Boxes</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Box no.
+            </th>
+
+            <th>
+              House
+            </th>
+
+            <th>
+              Description
+            </th>
+
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render collection: @house.boxes.order(:id), partial: "boxes/table_row", as: :box%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
