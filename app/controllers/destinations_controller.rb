@@ -1,23 +1,18 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: %i[show edit update destroy]
 
-  # GET /destinations
   def index
     @destinations = Destination.all
   end
 
-  # GET /destinations/1
   def show; end
 
-  # GET /destinations/new
   def new
     @destination = Destination.new
   end
 
-  # GET /destinations/1/edit
   def edit; end
 
-  # POST /destinations
   def create
     @destination = Destination.new(destination_params)
 
@@ -28,7 +23,6 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /destinations/1
   def update
     if @destination.update(destination_params)
       redirect_to @destination, notice: "Destination was successfully updated."
@@ -37,7 +31,6 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # DELETE /destinations/1
   def destroy
     @destination.destroy
     redirect_to destinations_url, notice: "Destination was successfully destroyed."
@@ -45,12 +38,10 @@ class DestinationsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_destination
     @destination = Destination.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def destination_params
     params.require(:destination).permit(:room_name)
   end
