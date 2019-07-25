@@ -42,12 +42,20 @@
       <% end %>
     <% end %>
 
+    <% options = {} %>
+
+    <% if current_house &&
+          box.house.nil? &&
+          request.env["REQUEST_PATH"].include?("/new") %>
+    <% end %>
+
+    <% options[:selected] = current_house.id if current_house %>
     <%= f.label :house %>
     <%= f.collection_select :house_id,
                             House.order(:name),
                             :id,
                             :name,
-                            current_house ? { selected: current_house.id } : {},
+                            options,
                             class: "form-control" %>
 
     <% if house_was_invalid %>

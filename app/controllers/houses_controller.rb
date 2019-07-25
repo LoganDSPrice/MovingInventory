@@ -34,6 +34,8 @@ class HousesController < ApplicationController
 
   def destroy
     @house.destroy
+    session[:current_house_id] = nil
+
     redirect_to houses_url, notice: "House was successfully destroyed."
   end
 

@@ -17,7 +17,8 @@ class BoxesController < ApplicationController
     @box = Box.new(box_params)
 
     if @box.save
-      session[:current_house_id] = @box.house_id
+      session[:current_house_id] = @box.house_id unless @box.house.nil?
+      session[:current_box_id] = @box.id
 
       redirect_to @box, notice: "Box was successfully created."
     else
@@ -27,8 +28,9 @@ class BoxesController < ApplicationController
 
   def update
     if @box.update(box_params)
-      session[:current_house_id] = @box.house_id
-      
+      session[:current_house_id] = @box.house_id unless @box.house.nil?
+      session[:current_box_id] = @box.id
+
       redirect_to @box, notice: "Box was successfully updated."
     else
       render :edit
@@ -37,6 +39,8 @@ class BoxesController < ApplicationController
 
   def destroy
     @box.destroy
+    session[:current_box_id] = nil
+
     redirect_to boxes_url, notice: "Box was successfully destroyed."
   end
 

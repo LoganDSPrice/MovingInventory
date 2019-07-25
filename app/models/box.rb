@@ -3,7 +3,7 @@ class Box < ApplicationRecord
   belongs_to :house
   has_many :items, dependent: :nullify
 
-  def option_display_value
-    "#{id} - #{description}"
+  def to_s
+    "#{id} - #{description} (#{house})"
   end
 end

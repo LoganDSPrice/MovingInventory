@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
+      session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
+      session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
+
       redirect_to @item, notice: "Item was successfully created."
     else
       render :new
@@ -25,6 +28,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
+      session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
+
       redirect_to @item, notice: "Item was successfully updated."
     else
       render :edit
