@@ -17,6 +17,7 @@ class HousesController < ApplicationController
     @house = House.new(house_params)
 
     if @house.save
+      session[:current_house_id] = @house.id
       redirect_to @house, notice: "House was successfully created."
     else
       render :new

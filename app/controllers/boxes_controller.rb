@@ -17,6 +17,8 @@ class BoxesController < ApplicationController
     @box = Box.new(box_params)
 
     if @box.save
+      session[:current_house_id] = @box.house_id
+
       redirect_to @box, notice: "Box was successfully created."
     else
       render :new
@@ -25,6 +27,8 @@ class BoxesController < ApplicationController
 
   def update
     if @box.update(box_params)
+      session[:current_house_id] = @box.house_id
+      
       redirect_to @box, notice: "Box was successfully updated."
     else
       render :edit
