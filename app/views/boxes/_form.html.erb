@@ -41,7 +41,9 @@
 
     <%= f.label :house %>
 
-    <%= f.text_field :house, class: house_class, placeholder: "Enter house" %>
+    <%= f.collection_select(:house_id, House.order(:name), :id, :name, {}, class: "form-control") %>
+
+    <%#= f.text_field :house, class: house_class, placeholder: "Enter house" %>
     <% if house_was_invalid %>
       <% box.errors.full_messages_for(:house).each do |message| %>
         <div class="invalid-feedback d-flex">
