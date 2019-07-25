@@ -15,7 +15,7 @@ chdir APP_ROOT do
 
   puts "== Adding Heroku Remotes =="
   system! "git remote add staging git@heroku.com:moving-inventory-staging.git"
-  system! "git remote add production git@heroku.com:checkins-production.git"
+  system! "git remote add production git@heroku.com:moving-inventory-production.git"
 
   puts "== Installing dependencies =="
   system! "gem install bundler --conservative"
