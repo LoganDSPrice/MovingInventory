@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
       session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
 
-      redirect_to @item, notice: "Item was successfully created."
+      redirect_to @item.box, notice: "#{@item.name} was successfully created."
     else
       render :new
     end
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
       session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
       session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
 
-      redirect_to @item, notice: "Item was successfully updated."
+      redirect_to @item.box, notice: "#{@item.name} was successfully updated."
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_url, notice: "Item was successfully destroyed."
+    redirect_to items_url, notice: "#{@item.name} was successfully destroyed."
   end
 
   private

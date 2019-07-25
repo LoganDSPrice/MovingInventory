@@ -1,5 +1,43 @@
+<div class="row justify-content-center mb-5">
+  <div class="d-flex col-md-11 align-items-center justify-content-between">
+    <span class="display-4">
+      Box: <%= @box %>
+    </span>
+    <div class="d-inline">
+      <span>
+        <%= link_to edit_box_path(@box), class: "btn btn-lg btn-warning" do %>
+        <i class="far fa-pencil "></i>
+        <% end %>
+      </span>
+      <span>
+        <%= link_to @box, method: :delete, class: "btn btn-lg btn-danger" do %>
+        <i class="far fa-trash-alt"></i>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>
+
 <div class="row justify-content-center mb-3">
-  <div class="col-md-8">
-    <%= render object: @box, partial: "card", as: :box %>
+  <div class="col-md-10">
+    <div class="card">
+      <h1 class="card-header h4 d-flex align-items-center justify-content-between">
+        <%= @box.items.count %> Items
+
+        <%= form_for Item.new(box: @box), html: {class: "form-inline"} do |f| %>
+          <div class="form-group">
+            <%= f.text_field :name, class:"form-control", placeholder: "New item", autofocus: true %>
+          </div>
+          <%= f.hidden_field :box_id, value: @box.id %>
+          <%= button_tag(class: "btn") do %>
+            <i class="fas fa-plus fa-fw"></i>
+          <% end %>
+        <% end %>
+      </h1>
+
+      <div class="list-group list-group-flush">
+        <%= render collection: @box.items, partial: "items/list_item", as: :item %>
+      </div>
+    </div>
   </div>
 </div>

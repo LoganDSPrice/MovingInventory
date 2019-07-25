@@ -1,16 +1,18 @@
 <tr>
   <td>
-    <%= box.house %>
+    <%= box.id %>
   </td>
   <td>
-    <%= box.id %>
+    <%= box.house %>
   </td>
   <td>
     <%= box.description %>
   </td>
-
-
   <td>
+    <%= box.items.count %>
+  </td>
+
+  <td class="justify-content-end d-flex">
     <div class="btn-group">
       <%= link_to box, class: "btn btn-sm btn-outline-secondary" do %>
         <i class="fas fa-search-plus fa-fw"></i>
