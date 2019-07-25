@@ -19,39 +19,25 @@
 </div>
 
 <div class="row justify-content-center mb-3">
-  <div class="col-md-10 d-flex justify-content-between align-items-end">
-    <h1 class="d-inline m-0">Boxes</h1>
-    <span>
-      Count: <%= @house.boxes.count %>
-    </span>
-  </div>
   <div class="col-md-10">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>
-              Box no.
-            </th>
+    <div class="card">
+      <h1 class="card-header h4 d-flex align-items-center justify-content-between">
+        <%= @house.boxes.count %> Boxes
 
-            <th>
-              House
-            </th>
+        <%= form_for Box.new(house: @house), html: {class: "form-inline"} do |f| %>
+          <div class="form-group">
+            <%= f.text_field :description, class:"form-control", placeholder: "New box description" %>
+          </div>
+          <%= f.hidden_field :house_id, value: @house.id %>
+          <%= button_tag(class: "btn") do %>
+            <i class="fas fa-plus fa-fw"></i>
+          <% end %>
+        <% end %>
+      </h1>
 
-            <th>
-              Description
-            </th>
-
-            <th>
-              Actions
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <%= render collection: @house.boxes.order(:id), partial: "boxes/table_row", as: :box%>
-        </tbody>
-      </table>
+      <div class="list-group list-group-flush">
+        <%= render collection: @house.boxes, partial: "boxes/list_item", as: :box %>
+      </div>
     </div>
   </div>
 </div>
