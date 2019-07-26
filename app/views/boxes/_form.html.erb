@@ -66,6 +66,25 @@
       <% end %>
     <% end %>
   </div>
+  <label>Destination Room</label>
+  <div class="form-group justify-content-center d-flex mb-1">
+    <div id="button-grid" class="btn-group-toggle" data-toggle="buttons">
+      <%= f.label :destination_id_, id: "unassigned", class: "mb-1 btn btn-warning border border-warning #{'active' if @box.destination == nil}" do %>
+        <%= f.radio_button :destination_id, "", autocomplete: "off" %> Unassigned<%= "*" if @box.destination == nil %>
+      <% end %>
+
+      <% destinations = Destination.order(:position) %>
+
+      <% destinations.each do |destination| %>
+        <%= f.label "destination_id_#{destination.id}", id: "position_#{destination.position}", class: "d-flex justify-content-center align-items-center room btn btn-secondary border border-dark #{'active' if @box.destination == destination}" do %>
+          <%= f.radio_button :destination_id, destination.id, autocomplete: "off" %><span><%= destination.room_name %><%= "*" if @box.destination == destination %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <small class="text-muted">* Current box destination</small>
+  </div>
 
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

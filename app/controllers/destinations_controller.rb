@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
   before_action :set_destination, only: %i[show edit update destroy]
 
   def index
-    @destinations = Destination.all
+    @destinations = Destination.order(:position)
   end
 
   def show; end
@@ -43,6 +43,6 @@ class DestinationsController < ApplicationController
   end
 
   def destination_params
-    params.require(:destination).permit(:room_name)
+    params.require(:destination).permit(:room_name, :position)
   end
 end

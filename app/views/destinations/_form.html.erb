@@ -27,5 +27,29 @@
     <% end %>
   </div>
 
+  <div class="form-group">
+    <% position_class = "form-control" %>
+    <% position_was_invalid = destination.errors.include?(:position) %>
+
+    <% if was_validated %>
+      <% if position_was_invalid %>
+        <% position_class << " is-invalid" %>
+      <% else %>
+        <% position_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :position %>
+
+    <%= f.number_field :position, class: position_class, placeholder: "Enter position number" %>
+    <% if position_was_invalid %>
+      <% destination.errors.full_messages_for(:position).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

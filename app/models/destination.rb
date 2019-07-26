@@ -12,5 +12,9 @@
 class Destination < ApplicationRecord
   has_many :boxes, dependent: :nullify
 
-  validates :position, uniqueness: true
+  validates :position, uniqueness: true, allow_nil: true
+
+  def to_s
+    room_name
+  end
 end
