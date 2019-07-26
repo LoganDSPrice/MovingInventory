@@ -42,7 +42,7 @@
       <% end %>
     <% end %>
 
-    <% options = {prompt: 'Select a box or create a new box...'} %>
+    <% options = {include_blank: 'Not in a box'} %>
     <% if current_box &&
           item.box.nil? &&
           request.env["REQUEST_PATH"].include?("/new") %>
