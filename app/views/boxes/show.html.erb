@@ -24,9 +24,9 @@
       <h1 class="card-header h4 d-flex align-items-center justify-content-between">
         <%= @box.items.count %> Items
 
-        <%= form_for Item.new(box: @box), html: {class: "form-inline"} do |f| %>
+        <%= form_for Item.new(box: @box), html: {class: "form-inline", remote: true} do |f| %>
           <div class="form-group">
-            <%= f.text_field :name, class:"form-control", placeholder: "New item", autofocus: true %>
+            <%= f.text_field :name, id:"new_item_input_field", class:"form-control", placeholder: "New item", autofocus: true %>
           </div>
           <%= f.hidden_field :box_id, value: @box.id %>
           <%= button_tag(class: "btn") do %>
@@ -35,8 +35,8 @@
         <% end %>
       </h1>
 
-      <div class="list-group list-group-flush">
-        <%= render collection: @box.items, partial: "items/list_item", as: :item %>
+      <div id="items-list" class="list-group list-group-flush">
+        <%= render collection: @box.items.order(created_at: :desc), partial: "items/list_item", as: :item %>
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
       session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
 
-      redirect_to @item.box, notice: "#{@item.name} was successfully created."
+      # redirect_to @item.box, notice: "#{@item.name} was successfully created."
     else
       render :new
     end
