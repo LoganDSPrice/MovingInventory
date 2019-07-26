@@ -8,6 +8,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  destination_id :bigint(8)
+#  photo          :string
 #
 # Foreign Keys
 #
@@ -19,6 +20,8 @@ class Box < ApplicationRecord
   belongs_to :destination, required: false
   belongs_to :house
   has_many :items, dependent: :nullify
+
+  mount_uploader :photo, PhotoUploader
 
   def to_s
     "#{id} - #{description} (#{house})"

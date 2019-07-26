@@ -5,7 +5,9 @@ ruby "2.6.3"
 
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap"
+gem "carrierwave"
 gem "chronic"
+gem "cloudinary"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "pg", ">= 0.18", "< 2.0"
@@ -19,6 +21,7 @@ gem "uglifier", ">= 1.3.0"
 group :development, :test do
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "dotenv-rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.7"
 end

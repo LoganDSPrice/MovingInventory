@@ -66,6 +66,14 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="input-group">
+    <div class="custom-file">
+      <%= f.label :photo, "Upload a photo", class: "custom-file-label" %>
+      <%= f.file_field :photo, class: "custom-file-input" %>
+    </div>
+  </div>
+
   <label>Destination Room</label>
   <div class="form-group justify-content-center d-flex mb-1">
     <div id="button-grid" class="btn-group-toggle" data-toggle="buttons">

@@ -8,6 +8,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  destination_id :bigint(8)
+#  photo          :string
 #
 # Foreign Keys
 #
