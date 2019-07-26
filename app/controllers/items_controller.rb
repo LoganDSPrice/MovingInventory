@@ -37,7 +37,9 @@ class ItemsController < ApplicationController
       session[:current_box_id] = @item.box.try(:id) unless @item.box.nil?
       session[:current_house_id] = @item.house.try(:id) unless @item.house.nil?
 
-      redirect_to @item.box, notice: "#{@item.name} was successfully updated."
+      redirect_url = @item.box ? box_url(@item.box) : items_url
+
+      redirect_to redirect_url, notice: "#{@item.name} was successfully updated."
     else
       render :edit
     end
