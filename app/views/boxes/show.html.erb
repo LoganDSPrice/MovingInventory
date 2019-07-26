@@ -22,7 +22,7 @@
   <div class="col-md-10">
     <div class="card">
       <h1 class="card-header h4 d-flex align-items-center justify-content-between">
-        <%= @box.items.count %> Items
+        <span id="item-count"><%= @box.items.count %> Items</span>
 
         <%= form_for Item.new(box: @box), html: {class: "form-inline", remote: true} do |f| %>
           <div class="form-group">
