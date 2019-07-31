@@ -1,11 +1,10 @@
 @include media-breakpoint-up(lg) {
   #button-grid {
-    width: 50%
+    width: 50%;
   }
 }
 
 #button-grid {
-  // width: 50%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(13, 1fr);
